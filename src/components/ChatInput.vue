@@ -40,6 +40,7 @@ function submit(event: Event) {
    align-items: center;
    flex-direction: row;
 
+   margin-top: 32px;
 }
 
 input {
@@ -47,6 +48,7 @@ input {
    border: none;
    outline: none;
    font-size: 18px;
+   flex: 1;
 
    color: var(--items-active);
 

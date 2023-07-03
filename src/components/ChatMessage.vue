@@ -25,7 +25,7 @@ const isAuthor = props.author.uid === userStore.user!.uid
    display: flex;
    flex-direction: row;
    align-items: flex-end;
-   justify-content: flex-end;
+   width: calc(100% - 16px);
 
    &:has(.authorBallon) {
       flex-direction: row-reverse;

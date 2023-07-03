@@ -1,12 +1,23 @@
-import { computed, onUnmounted, ref, watch } from 'vue'
+import { computed, onUnmounted, ref } from 'vue'
 import { defineStore } from 'pinia'
-import { GoogleAuthProvider, getAuth, signInWithPopup, type User } from 'firebase/auth'
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  type User,
+  onAuthStateChanged
+} from 'firebase/auth'
 import { app } from '../firebaseConfig'
 
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider()
+
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>()
+
+  onAuthStateChanged(auth, (newUser) => {
+    user.value = newUser || undefined
+  })
 
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider)
